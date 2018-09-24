@@ -58,4 +58,5 @@ class PlantAndGardenPlantingsViewModel(
     )
 
     val waterDate = ObservableField<String>("$wateringPrefix - $wateringSuffix")
+    val isNeedWatering  = ObservableField<Boolean> (plant.shouldBeWatered(gardenPlanting.lastWateringDate))
 }

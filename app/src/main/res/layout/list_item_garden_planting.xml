@@ -52,7 +52,7 @@
             android:layout_marginStart="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_normal"
             android:text="@{viewModel.plantDate}"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/watering_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageView"/>
 
@@ -65,9 +65,22 @@
             android:layout_marginTop="@dimen/margin_small"
             android:layout_marginBottom="@dimen/margin_normal"
             android:text="@{viewModel.waterDate}"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/watering_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/plant_date"/>
+
+        <Button
+            android:id="@+id/watering_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/water_now"
+            android:layout_marginStart="@dimen/margin_small"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:layout_marginEnd="@dimen/margin_small"
+            app:isGone="@{!viewModel.isNeedWatering()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView"
+            />
 
     </android.support.constraint.ConstraintLayout>
 </layout>
