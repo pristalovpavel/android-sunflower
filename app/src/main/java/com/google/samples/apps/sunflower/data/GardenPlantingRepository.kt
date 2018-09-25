@@ -42,6 +42,9 @@ class GardenPlantingRepository private constructor(
 
     fun getPlantAndGardenPlantings() = gardenPlantingDao.getPlantAndGardenPlantings()
 
+    fun updateGardenPlanting(gardenPlanting: GardenPlanting)
+            = gardenPlantingDao.updateGardenPlanting(gardenPlanting)
+
     companion object {
 
         // For Singleton instantiation

@@ -21,7 +21,6 @@ import android.databinding.DataBindingUtil
 import android.support.v7.recyclerview.extensions.ListAdapter
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import com.google.samples.apps.sunflower.R
 import com.google.samples.apps.sunflower.data.PlantAndGardenPlantings
@@ -60,7 +59,12 @@ class GardenPlantingAdapter(
                     itemView.context,
                     plantings
                 )
-                wateringButton.setOnClickListener(View.OnClickListener {  })
+                wateringButton.setOnClickListener {
+                    for (gardenPlant in plantings.gardenPlantings) {
+                        gardenPlant.lastWateringDate = Calendar.getInstance()
+
+                    }
+                }
                 executePendingBindings()
             }
         }
