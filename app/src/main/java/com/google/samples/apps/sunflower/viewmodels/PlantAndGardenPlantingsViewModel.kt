@@ -20,14 +20,18 @@ import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.databinding.ObservableField
 import com.google.samples.apps.sunflower.R
+import com.google.samples.apps.sunflower.data.GardenPlantingRepository
 import com.google.samples.apps.sunflower.data.PlantAndGardenPlantings
 import java.text.SimpleDateFormat
 import java.util.Locale
+import javax.inject.Inject
 
 class PlantAndGardenPlantingsViewModel(
     context: Context,
     plantings: PlantAndGardenPlantings
 ) : ViewModel() {
+
+    @Inject lateinit var repository: GardenPlantingRepository
 
     private val plant = checkNotNull(plantings.plant)
     private val gardenPlanting = plantings.gardenPlantings[0]

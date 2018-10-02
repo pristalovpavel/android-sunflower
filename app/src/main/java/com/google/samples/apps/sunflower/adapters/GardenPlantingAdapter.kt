@@ -25,7 +25,9 @@ import android.view.ViewGroup
 import com.google.samples.apps.sunflower.R
 import com.google.samples.apps.sunflower.data.PlantAndGardenPlantings
 import com.google.samples.apps.sunflower.databinding.ListItemGardenPlantingBinding
+import com.google.samples.apps.sunflower.utilities.injection.GardenPlantingComponent
 import com.google.samples.apps.sunflower.viewmodels.PlantAndGardenPlantingsViewModel
+import java.util.*
 
 class GardenPlantingAdapter(
     val context: Context
@@ -59,6 +61,9 @@ class GardenPlantingAdapter(
                     itemView.context,
                     plantings
                 )
+                Dagger
+                //.create().inject(viewModel)
+
                 wateringButton.setOnClickListener {
                     for (gardenPlant in plantings.gardenPlantings) {
                         gardenPlant.lastWateringDate = Calendar.getInstance()
