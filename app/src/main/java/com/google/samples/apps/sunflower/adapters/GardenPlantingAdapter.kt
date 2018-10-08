@@ -23,9 +23,10 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.google.samples.apps.sunflower.R
+import com.google.samples.apps.sunflower.data.GardenPlantingRepository
 import com.google.samples.apps.sunflower.data.PlantAndGardenPlantings
 import com.google.samples.apps.sunflower.databinding.ListItemGardenPlantingBinding
-import com.google.samples.apps.sunflower.utilities.injection.GardenPlantingComponent
+import com.google.samples.apps.sunflower.utilities.InjectorUtils
 import com.google.samples.apps.sunflower.viewmodels.PlantAndGardenPlantingsViewModel
 import java.util.*
 
@@ -61,13 +62,13 @@ class GardenPlantingAdapter(
                     itemView.context,
                     plantings
                 )
-                Dagger
-                //.create().inject(viewModel)
 
+                // on button click refresh last watering date with current time
                 wateringButton.setOnClickListener {
                     for (gardenPlant in plantings.gardenPlantings) {
                         gardenPlant.lastWateringDate = Calendar.getInstance()
-
+                        InjectorUtils.provideGardenPlantingRepository(itemView.context)
+                                .updateGardenPlanting(gardenPlant)
                     }
                 }
                 executePendingBindings()

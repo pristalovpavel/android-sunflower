@@ -32,6 +32,6 @@ class GardenPlantDiffCallback : DiffUtil.ItemCallback<PlantAndGardenPlantings>()
         oldItem: PlantAndGardenPlantings,
         newItem: PlantAndGardenPlantings
     ): Boolean {
-        return oldItem.plant == newItem.plant
+        return oldItem == newItem
     }
 }

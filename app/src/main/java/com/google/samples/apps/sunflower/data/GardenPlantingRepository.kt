@@ -42,11 +42,13 @@ class GardenPlantingRepository private constructor(
 
     fun getPlantAndGardenPlantings() = gardenPlantingDao.getPlantAndGardenPlantings()
 
-    fun updateGardenPlanting(gardenPlanting: GardenPlanting)
-            = gardenPlantingDao.updateGardenPlanting(gardenPlanting)
+    fun updateGardenPlanting(gardenPlanting: GardenPlanting) {
+        runOnIoThread {
+            gardenPlantingDao.updateGardenPlanting(gardenPlanting)
+        }
+    }
 
     companion object {
-
         // For Singleton instantiation
         @Volatile private var instance: GardenPlantingRepository? = null
 
