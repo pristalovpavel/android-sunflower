@@ -50,7 +50,6 @@ object InjectorUtils {
         return PlantListViewModelFactory(repository)
     }
 
-    // TODO maybe, there is more elegant way to do this
     fun provideGardenPlantingRepository(context: Context): GardenPlantingRepository =
             getGardenPlantingRepository(context)
 
