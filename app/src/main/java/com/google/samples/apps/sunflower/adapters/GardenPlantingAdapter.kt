@@ -23,7 +23,6 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.google.samples.apps.sunflower.R
-import com.google.samples.apps.sunflower.data.GardenPlantingRepository
 import com.google.samples.apps.sunflower.data.PlantAndGardenPlantings
 import com.google.samples.apps.sunflower.databinding.ListItemGardenPlantingBinding
 import com.google.samples.apps.sunflower.utilities.InjectorUtils
@@ -31,9 +30,10 @@ import com.google.samples.apps.sunflower.viewmodels.PlantAndGardenPlantingsViewM
 import java.util.*
 
 class GardenPlantingAdapter(
-    val context: Context
-) : ListAdapter<PlantAndGardenPlantings, GardenPlantingAdapter.ViewHolder>(GardenPlantDiffCallback()) {
-
+        val context: Context
+) : ListAdapter<PlantAndGardenPlantings,
+        GardenPlantingAdapter.ViewHolder>(GardenPlantDiffCallback())
+{
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             DataBindingUtil.inflate(

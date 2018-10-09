@@ -20,10 +20,13 @@ import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.helper.ItemTouchHelper
+import android.support.v7.widget.helper.ItemTouchHelper.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.samples.apps.sunflower.adapters.GardenPlantingAdapter
+import com.google.samples.apps.sunflower.adapters.swipetodelete.SwipeToDeleteTouchHelperCallback
 import com.google.samples.apps.sunflower.databinding.FragmentGardenBinding
 import com.google.samples.apps.sunflower.utilities.InjectorUtils
 import com.google.samples.apps.sunflower.viewmodels.GardenPlantingListViewModel
@@ -39,6 +42,8 @@ class GardenFragment : Fragment() {
         val adapter = GardenPlantingAdapter(binding.root.context)
         binding.gardenList.adapter = adapter
         subscribeUi(adapter, binding)
+        // swipe-to-delete realization
+        ItemTouchHelper(SwipeToDeleteTouchHelperCallback(binding.gardenList,0, RIGHT)).attachToRecyclerView(binding.gardenList)
         return binding.root
     }
 

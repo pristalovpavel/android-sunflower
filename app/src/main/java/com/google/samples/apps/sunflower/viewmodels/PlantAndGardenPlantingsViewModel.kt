@@ -31,14 +31,13 @@ class PlantAndGardenPlantingsViewModel(
     plantings: PlantAndGardenPlantings
 ) : ViewModel() {
 
-    @Inject lateinit var repository: GardenPlantingRepository
-
     private val plant = checkNotNull(plantings.plant)
     private val gardenPlanting = plantings.gardenPlantings[0]
 
     private val dateFormat by lazy { SimpleDateFormat("MMM d, yyyy", Locale.US) }
     private val plantDateString by lazy { dateFormat.format(gardenPlanting.plantDate.time) }
-    private val waterDateString by lazy { dateFormat.format(gardenPlanting.lastWateringDate.time) }
+    private val waterDateString by lazy {
+        dateFormat.format(gardenPlanting.lastWateringDate.time) }
     private val wateringPrefix by lazy {
         context.getString(
             R.string.watering_next_prefix,
